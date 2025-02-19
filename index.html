@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive AI Learning Paths in Traditional Chinese Medicine</title>
-    <!-- Keep the same CSS styles as original -->
+    <title>AI Learning Paths in Traditional Chinese Medicine</title>
     <style>
-        /* [Previous CSS remains exactly the same] */
         body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
         .container { 
-            position: relative;
             display: flex; 
             justify-content: space-between; 
             flex-wrap: wrap;
@@ -23,186 +20,176 @@
             margin: 10px; 
             transition: all 0.3s ease;
         }
-        /* [Rest of the original CSS remains the same] */
+        .path:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .module { background-color: #f0f0f0; border: 1px solid #999; border-radius: 5px; padding: 10px; margin: 10px 0; }
+        .common { background-color: #e6f3ff; border-color: #3399ff; }
+        .practitioners { background-color: #ffe6e6; border-color: #ff3333; }
+        .educators { background-color: #e6ffe6; border-color: #33cc33; }
+        .students { background-color: #fff2e6; border-color: #ff9933; }
+        .level { font-weight: bold; color: #1a5f7a; }
+        .objective { font-style: italic; color: #666; }
+        .resources { background-color: #e6e6e6; padding: 5px; margin-top: 5px; }
+        h1, h2 { text-align: center; }
+
+        .arrow-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            height: 50px;
+        }
+        .arrow {
+            text-align: center;
+            font-size: 24px;
+            position: absolute;
+            width: 33.33%;
+        }
+        .arrow.left { left: 0; }
+        .arrow.center { left: 33.33%; }
+        .arrow.right { right: 0; }
+        .arrow.inter-module { position: static; width: 100%; margin: 10px 0; }
+
+        @media (max-width: 768px) {
+            .path { width: 100%; }
+            .path:hover { transform: scale(1.02); }
+        }
+
+        /* Common button styles */
+        .button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .learn-more-button { background-color: #333; color: white; }
+        .learn-more-button:hover { background-color: #555; }
+        .researcher-button {
+            background: linear-gradient(135deg, #D6C1E8, #F9E6E6);
+            color: #4A4A4A;
+            border: none;
+        }
+        .researcher-button:hover {
+            background: linear-gradient(135deg, #9B59B6, #EC7063);
+            color: white;
+        }
+
+        /* Side panel styles */
+        #sidePanel {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            background: #ccc;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .closebtn:hover { background-color: #bbb; }
+        .side-panel-content { padding: 20px; font-size: 18px; }
+
+        /* Overlay for side panel */
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+
+        /* Back to Top button */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        #backToTop:hover { background-color: #333; }
     </style>
 </head>
 <body>
-    <h1>Comprehensive AI Learning Paths in Traditional Chinese Medicine</h1>
-    <p style="text-align: center; font-style: italic;">Revised February 2025</p>
+    <h1>AI Learning Paths in Traditional Chinese Medicine</h1>
 
-    <a class="learn-more-button" onclick="openSidePanel()">What is a "Level"?</a>
+    <a class="button learn-more-button" onclick="openSidePanel()">What is a "Level"?</a>
+    <a class="button researcher-button" href="researcher-path.html">Click for Researcher Path</a>
 
-    <!-- Common Starting Point Modules -->
-    <div class="module common">
-        <h2>Common Starting Point: Foundation in AI for TCM</h2>
-        <p class="objective">Objective: Establish comprehensive understanding of AI applications and implications in TCM practice.</p>
-        <p><span class="level">Level 1:</span> AI Fundamentals (machine learning, neural networks, NLP)</p>
-        <p><span class="level">Level 1:</span> Computer vision and pattern recognition</p>
-        <p><span class="level">Level 2:</span> TCM-Specific AI Applications</p>
-        <div class="resources">
-            <strong>Core Components:</strong>
-            <ul>
-                <li>AI Fundamentals (NLTK, SpaCy, Scikit-Learn)</li>
-                <li>AI in Healthcare Applications</li>
-                <li>TCM-Specific AI Applications</li>
-                <li>Ethical Framework</li>
-            </ul>
-        </div>
-    </div>
+    <button onclick="topFunction()" id="backToTop" title="Go to top">Back to Top</button>
 
-    <div class="module common">
-        <h2>Ethical Framework and Guidelines</h2>
-        <p class="objective">Objective: Understand and implement ethical AI practices in TCM</p>
-        <p><span class="level">Level 1:</span> NCCAOM ethical guidelines</p>
-        <p><span class="level">Level 1:</span> Whitehouse AI Bill of Rights</p>
-        <p><span class="level">Level 2:</span> Data privacy and security</p>
-        <p><span class="level">Level 3:</span> Bias recognition and mitigation</p>
-        <div class="resources">
-            <strong>Learning Resources:</strong>
-            <ul>
-                <li>NCCAOM Ethical Guidelines</li>
-                <li>Risk Assessment Checklist</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="arrow-container">
-        <div class="arrow left">↓</div>
-        <div class="arrow center">↓</div>
-        <div class="arrow right">↓</div>
-    </div>
-
-    <div class="container">
-        <!-- Practitioners Path -->
-        <div class="path practitioners">
-            <h2>Practitioners Path</h2>
-            <div class="module">
-                <h3>AI-Assisted Clinical Practice</h3>
-                <p class="objective">Objective: Enhance clinical decision-making through AI integration while maintaining TCM principles.</p>
-                <p><span class="level">Level 2:</span> AI-assisted pulse and tongue diagnosis</p>
-                <p><span class="level">Level 2:</span> Herbal formula and acupoint selection tools</p>
-                <p><span class="level">Level 3:</span> Evaluation of AI recommendations</p>
-                <p><span class="level">Level 3:</span> Integration with clinical judgment</p>
-                <div class="resources">
-                    <strong>Practical Tools:</strong>
-                    <ul>
-                        <li>Diagnostic assistance platforms</li>
-                        <li>Formula optimization software</li>
-                        <li>Treatment planning systems</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="arrow inter-module">↓</div>
-            <div class="module">
-                <h3>Practice Management and Innovation</h3>
-                <p class="objective">Objective: Optimize practice operations through AI integration.</p>
-                <p><span class="level">Level 2:</span> AI for patient communication and telehealth</p>
-                <p><span class="level">Level 3:</span> Workflow optimization</p>
-                <p><span class="level">Level 3:</span> Quality assurance and outcome tracking</p>
-                <div class="resources">
-                    <strong>Implementation Focus:</strong>
-                    <ul>
-                        <li>Practice efficiency</li>
-                        <li>Patient engagement</li>
-                        <li>Quality of care</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Research Path (New) -->
-        <div class="path educators">
-            <h2>Research Path</h2>
-            <div class="module">
-                <h3>Advanced Research Methods</h3>
-                <p class="objective">Objective: Develop expertise in AI-driven TCM research.</p>
-                <p><span class="level">Level 3:</span> Research design with AI integration</p>
-                <p><span class="level">Level 3:</span> Data collection and analysis</p>
-                <p><span class="level">Level 4:</span> Novel AI application development</p>
-                <p><span class="level">Level 4:</span> Research leadership</p>
-                <div class="resources">
-                    <strong>Research Components:</strong>
-                    <ul>
-                        <li>Clinical trial design</li>
-                        <li>Outcome measurement</li>
-                        <li>Innovation in TCM-AI integration</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="arrow inter-module">↓</div>
-            <div class="module">
-                <h3>Collaborative Research</h3>
-                <p class="objective">Objective: Foster effective research partnerships and innovation.</p>
-                <p><span class="level">Level 3:</span> Team science approaches</p>
-                <p><span class="level">Level 4:</span> Research program development</p>
-                <p><span class="level">Level 4:</span> Multi-center trial management</p>
-                <div class="resources">
-                    <strong>Focus Areas:</strong>
-                    <ul>
-                        <li>Cross-disciplinary collaboration</li>
-                        <li>Funding acquisition</li>
-                        <li>Knowledge translation</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Continuing Education Path -->
-        <div class="path students">
-            <h2>Continuing Education Path</h2>
-            <div class="module">
-                <h3>Professional Development</h3>
-                <p class="objective">Objective: Create and engage with effective AI learning resources.</p>
-                <p><span class="level">Level 2:</span> Modular learning design</p>
-                <p><span class="level">Level 3:</span> Competency assessment</p>
-                <p><span class="level">Level 3:</span> Case-based learning</p>
-                <div class="resources">
-                    <strong>Educational Materials:</strong>
-                    <ul>
-                        <li>Learning modules</li>
-                        <li>Case studies</li>
-                        <li>Assessment tools</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="arrow inter-module">↓</div>
-            <div class="module">
-                <h3>Implementation and Integration</h3>
-                <p class="objective">Objective: Ensure effective delivery and integration of AI knowledge.</p>
-                <p><span class="level">Level 3:</span> Learning assessment</p>
-                <p><span class="level">Level 3:</span> Practice integration</p>
-                <p><span class="level">Level 4:</span> Quality assurance</p>
-                <div class="resources">
-                    <strong>Tools and Resources:</strong>
-                    <ul>
-                        <li>Treatment databases</li>
-                        <li>Formula libraries</li>
-                        <li>Practice guidelines</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Side Panel Content Update -->
-    <div id="sidePanel" class="side-panel">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeSidePanel()">&times;</a>
+    <!-- Side Panel for AI Literacy Levels -->
+    <div id="overlay"></div>
+    <div id="sidePanel">
+        <button class="closebtn" aria-label="Close" onclick="closeSidePanel()">&times;</button>
         <div class="side-panel-content">
             <h2>AI Literacy Levels</h2>
             <img src="pyramid-diagram.png" alt="AI Literacy Pyramid" style="width:100%; margin-bottom:20px;">
-            <p><strong>Level 1: Understand AI</strong> – Basic understanding of AI concepts, machine learning, neural networks, and foundation knowledge of AI applications in healthcare and TCM.</p>
-            <p><strong>Level 2: Use and Apply AI</strong> – Practical application of AI tools in clinical settings, implementation of AI-assisted diagnostics and treatment planning.</p>
-            <p><strong>Level 3: Analyze and Evaluate AI</strong> – Critical evaluation of AI-generated recommendations, assessment of AI tools and their impact on clinical practice.</p>
-            <p><strong>Level 4: Create AI</strong> – Development of new AI applications for TCM, leading AI research initiatives, and innovation in AI-driven healthcare solutions.</p>
+            <p><strong>Level 1:</strong> Understand AI basics.</p>
+            <p><strong>Level 2:</strong> Use AI tools effectively.</p>
+            <p><strong>Level 3:</strong> Critically evaluate AI applications.</p>
+            <p><strong>Level 4:</strong> Create AI-driven solutions.</p>
         </div>
     </div>
 
-    <button onclick="topFunction()" id="backToTop" title="Go to top">Back to Top</button>
-    <div id="overlay"></div>
-
-    <!-- Keep the original JavaScript -->
     <script>
-        // [Previous JavaScript remains exactly the same]
+        var mybutton = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function() {
+            mybutton.style.display = window.scrollY > 20 ? "block" : "none";
+        });
+
+        function topFunction() {
+            if (document.documentElement.scrollTop > 0) {
+                requestAnimationFrame(topFunction);
+                window.scrollTo(0, document.documentElement.scrollTop - 50);
+            }
+        }
+
+        function openSidePanel() {
+            document.getElementById("sidePanel").style.width = "400px";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closeSidePanel() {
+            document.getElementById("sidePanel").style.width = "0";
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        document.getElementById("overlay").addEventListener("click", closeSidePanel);
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") closeSidePanel();
+        });
     </script>
 </body>
 </html>
