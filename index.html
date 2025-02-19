@@ -6,12 +6,15 @@
     <title>AI Learning Paths in Traditional Chinese Medicine</title>
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1, h2 { text-align: center; }
         .container { 
             display: flex; 
             justify-content: space-between; 
             flex-wrap: wrap;
             padding: 10px;
         }
+
+        /* Learning Paths Box Styling */
         .path { 
             width: 30%; 
             border: 2px solid #333; 
@@ -19,22 +22,39 @@
             padding: 10px; 
             margin: 10px; 
             transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f7f7f7, #ddd);
         }
         .path:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             z-index: 1;
         }
-        .module { background-color: #f0f0f0; border: 1px solid #999; border-radius: 5px; padding: 10px; margin: 10px 0; }
+
+        /* Module Styling */
+        .module { 
+            background-color: #f0f0f0; 
+            border: 1px solid #999; 
+            border-radius: 5px; 
+            padding: 10px; 
+            margin: 10px 0; 
+            transition: all 0.3s ease;
+        }
+        .module:hover {
+            transform: scale(1.02);
+        }
+
+        /* Color Coding for Paths */
         .common { background-color: #e6f3ff; border-color: #3399ff; }
-        .practitioners { background-color: #ffe6e6; border-color: #ff3333; }
-        .educators { background-color: #e6ffe6; border-color: #33cc33; }
-        .students { background-color: #fff2e6; border-color: #ff9933; }
+        .practitioners { background: linear-gradient(135deg, #ffe6e6, #ffcccc); border-color: #ff3333; }
+        .educators { background: linear-gradient(135deg, #e6ffe6, #ccffcc); border-color: #33cc33; }
+        .students { background: linear-gradient(135deg, #fff2e6, #ffeedd); border-color: #ff9933; }
+
+        /* Text Formatting */
         .level { font-weight: bold; color: #1a5f7a; }
         .objective { font-style: italic; color: #666; }
         .resources { background-color: #e6e6e6; padding: 5px; margin-top: 5px; }
-        h1, h2 { text-align: center; }
 
+        /* Arrows for Path Flow */
         .arrow-container {
             display: flex;
             justify-content: space-between;
@@ -52,12 +72,13 @@
         .arrow.right { right: 0; }
         .arrow.inter-module { position: static; width: 100%; margin: 10px 0; }
 
+        /* Responsive for Smaller Screens */
         @media (max-width: 768px) {
             .path { width: 100%; }
             .path:hover { transform: scale(1.02); }
         }
 
-        /* Common button styles */
+        /* Common button styling */
         .button {
             display: inline-block;
             margin: 20px 0;
@@ -80,7 +101,7 @@
             color: white;
         }
 
-        /* Side panel styles */
+        /* Side Panel Styles */
         #sidePanel {
             height: 100%;
             width: 0;
@@ -109,7 +130,7 @@
         .closebtn:hover { background-color: #bbb; }
         .side-panel-content { padding: 20px; font-size: 18px; }
 
-        /* Overlay for side panel */
+        /* Overlay for Side Panel */
         #overlay {
             position: fixed;
             display: none;
@@ -121,7 +142,7 @@
             z-index: 99;
         }
 
-        /* Back to Top button */
+        /* Back to Top Button */
         #backToTop {
             display: none;
             position: fixed;
@@ -148,7 +169,7 @@
 
     <button onclick="topFunction()" id="backToTop" title="Go to top">Back to Top</button>
 
-    <!-- Side Panel for AI Literacy Levels -->
+    <!-- Side Panel -->
     <div id="overlay"></div>
     <div id="sidePanel">
         <button class="closebtn" aria-label="Close" onclick="closeSidePanel()">&times;</button>
@@ -163,10 +184,8 @@
     </div>
 
     <script>
-        var mybutton = document.getElementById("backToTop");
-
         window.addEventListener("scroll", function() {
-            mybutton.style.display = window.scrollY > 20 ? "block" : "none";
+            document.getElementById("backToTop").style.display = window.scrollY > 20 ? "block" : "none";
         });
 
         function topFunction() {
